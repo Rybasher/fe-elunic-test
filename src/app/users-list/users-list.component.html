@@ -1,0 +1,11 @@
+<div>
+  <ul>
+    <li *ngFor="let user of users$ | async">
+      <ul>
+        <li>Name: {{ user.userName }}</li>
+        <li>Email: {{ user.email }}</li>
+        <li>Type: {{ user.type }}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,58 @@
+<form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" formControlName="userName" class="" />
+
+    <app-form-error [condition]="isValid('userName', 'required')"
+      >Username is required</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('userName', 'minlength')"
+      >Username must be at least 3 characters</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('userName', 'maxlength')"
+      >Username must be at most 24 characters</app-form-error
+    >
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email" class="" />
+
+    <app-form-error [condition]="isValid('email', 'required')"
+      >Email is required</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('email', 'email')"
+      >Invalid email format</app-form-error
+    >
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" formControlName="password" class="" />
+
+    <app-form-error [condition]="isValid('password', 'required')"
+      >Password is required</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('password', 'minlength')"
+      >Password must be at least 5 characters</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('password', 'maxlength')"
+      >Password must be at most 24 characters</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('password', 'pattern')"
+      >Password does not match a pattern</app-form-error
+    >
+
+    <app-dropdown
+      [items]="userTypes"
+      [control]="userForm.controls['type']"
+    ></app-dropdown>
+
+    <div>
+      <button type="submit" [disabled]="!userForm.valid">Register</button>
+      <button type="button" routerLink="/login">Login</button>
+    </div>
+  </div>
+</form>

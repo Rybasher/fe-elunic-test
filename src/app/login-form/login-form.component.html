@@ -1,0 +1,38 @@
+<form [formGroup]="userForm" (ngSubmit)="submitForm()" class="form">
+  <div>
+    <label for="email">User Name:</label>
+    <input type="text" id="email" formControlName="userName" class="" />
+
+    <app-form-error [condition]="isValid('userName', 'required')"
+      >User Name is required</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('userName', 'email')"
+      >Invalid user name format</app-form-error
+    >
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" formControlName="password" class="" />
+
+    <app-form-error [condition]="isValid('password', 'required')"
+      >Password is required</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('password', 'minlength')"
+      >Password must be at least 5 characters</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('password', 'maxlength')"
+      >Password must be at most 24 characters</app-form-error
+    >
+
+    <app-form-error [condition]="isValid('password', 'pattern')"
+      >Password does not match a pattern</app-form-error
+    >
+
+    <div>
+      <button type="submit" [disabled]="!userForm.valid">Login</button>
+      <button type="button" routerLink="/register">Register</button>
+    </div>
+  </div>
+</form>

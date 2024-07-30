@@ -1,0 +1,9 @@
+<div class="dropdown">
+  <button (click)="toggleDropdown()" type="button">Select an item</button>
+  <ul *ngIf="isOpen" class="dropdown-list">
+    <li *ngFor="let item of items" (click)="selectItem(item)">{{ item }}</li>
+  </ul>
+  <div *ngIf="selectedValue" class="selected-item">
+    Selected Item: {{ selectedValue }}
+  </div>
+</div>
