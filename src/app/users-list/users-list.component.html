@@ -3,7 +3,7 @@
     <button (click)="logout()">Logout</button>
   </div>
   <ul>
-    <li *ngFor="let user of users$ | async">
+    <li *ngFor="let user of users$ | async" class="user-list">
       <ul>
         <li>Name: {{ user.userName }}</li>
         <li>Email: {{ user.email }}</li>
