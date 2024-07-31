@@ -11,6 +11,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './@core/guards/auth.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,18 @@ import { AuthGuard } from './@core/guards/auth.guard';
     LoginFormComponent,
     UsersListComponent,
   ],
-  imports: [BrowserModule, ReactiveFormsModule, CoreModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    CoreModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+  ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
 })

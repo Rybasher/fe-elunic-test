@@ -5,12 +5,16 @@ import { LoginUserDto } from '../../@domain/dto/login-user.dto';
 import { CreateUserDto } from '../../@domain/dto/create-user.dto';
 import { tap } from 'rxjs';
 import { TokenModel } from '../../@domain/models/token.model';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private readonly _urlPrefix = 'auth';
 
-  constructor(private readonly _apiService: ApiService) {}
+  constructor(
+    private readonly _apiService: ApiService,
+    private readonly _router: Router
+  ) {}
 
   login(loginUserDto: LoginUserDto) {
     return this._apiService
@@ -19,6 +23,11 @@ export class AuthService {
         loginUserDto
       )
       .pipe(tap((x) => localStorage.setItem('token', x.token.accessToken)));
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this._router.navigate(['/login']);
   }
 
   register(createUserDto: CreateUserDto) {

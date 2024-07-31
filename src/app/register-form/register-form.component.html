@@ -27,22 +27,14 @@
     >
 
     <label for="password">Password:</label>
-    <input type="text" id="password" formControlName="password" class="" />
+    <input type="password" id="password" formControlName="password" class="" />
 
     <app-form-error [condition]="isValid('password', 'required')"
       >Password is required</app-form-error
     >
 
-    <app-form-error [condition]="isValid('password', 'minlength')"
-      >Password must be at least 5 characters</app-form-error
-    >
-
-    <app-form-error [condition]="isValid('password', 'maxlength')"
-      >Password must be at most 24 characters</app-form-error
-    >
-
     <app-form-error [condition]="isValid('password', 'pattern')"
-      >Password does not match a pattern</app-form-error
+      >Password must contain at least one digit, one lowercase letter, one uppercase letter, and be between 8 and 24 characters long</app-form-error
     >
 
     <app-dropdown
