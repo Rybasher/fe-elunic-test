@@ -62,7 +62,9 @@ export class RegisterFormComponent {
       type: new FormControl('', Validators.required),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,24}$/),
+        Validators.pattern(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[0-9a-zA-Z@$!%*?&]{8,24}$/
+        ),
       ]),
     });
   }

@@ -40,10 +40,8 @@ export class LoginFormComponent {
       userName: new FormControl('', [Validators.required]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(24),
         Validators.pattern(
-          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,60}$/
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[0-9a-zA-Z@$!%*?&]{8,24}$/
         ),
       ]),
     });
